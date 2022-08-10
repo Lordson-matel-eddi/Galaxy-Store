@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div style="display: flex; justify-content: space-between; margin: 7px;">
+    <div style="display: flex; flex-direction: column;">
+        <p style="font-weight: bold;">Filter</p>
+        <a href="{% url 'collection:all' %}">All</a>
+        <a href="{% url 'collection:fendi' %}">Fendi</a>
+        <a href="{% url 'collection:balenciaga' %}">Balenciaga</a>
+    </div>
+
+    <div style="display: flex; flex-direction: column;">
+        <p style="font-weight: bold;">Sort</p>
+        <a href="{% url 'collection:fendi' %}">All</a>
+        <a href="#">Shirt</a>
+        <a href="#">Shoe</a>
+    </div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+{% for fendi in collection %}
+<div style="height: 270px; width: 190px; border-color: lightslategrey; display: flex; flex-direction: column; align-items: center; justify-content: center; border-style: solid; border-width: 2px; margin-bottom: 3px; margin-top: 30px; margin: 5px;">
+    <img src="{{ fendi.collection.url }}" alt="" style="height: 230px; width: 170px; object-fit: cover;">
+</div> 
+
+{% endfor %}
+</div>
+
+{% endblock content %}
